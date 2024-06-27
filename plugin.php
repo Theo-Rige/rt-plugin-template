@@ -1,6 +1,7 @@
 <?php
 /*
 Plugin Name:
+Plugin URI:
 Description:
 Version: 1.0.0
 author:
