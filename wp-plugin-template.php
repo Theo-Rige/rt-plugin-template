@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name:
-Plugin URI:
-Description:
+Plugin Name: WP Plugin Template
+Plugin URI: https://github.com/Theo-Rige/wp-plugin-template
+Description: A simple WordPress plugin template.
 Version: 1.0.0
-author:
-author uri:
-developer:
-developer uri:
+author: Theo Rige
+author uri: rigetheo.netlify.app
+developer: Theo Rige
+developer uri: rigetheo.netlify.app
 */
 
 use DOMAIN\Plugin;
