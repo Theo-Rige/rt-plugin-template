@@ -25,4 +25,20 @@ class Tool
             return ob_get_clean();
         }
     }
+
+    /**
+     * Loads an SVG file and returns it as a string.
+     *
+     * @param string $name The name of the SVG file to load.
+     * @param string|null $class Optional. The CSS class to apply to the SVG element. Default is null.
+     * @return string The SVG file content as a string.
+     */
+    public static function loadSVG($name, $class = null)
+    {
+        ob_start();
+        include PLUGIN_DIR . 'assets/svg/' . $name . '.svg';
+        $svg = ob_get_clean();
+        $svg = str_replace('<svg', '<svg class="' . (!empty($class) ? $class : $name) . '"', $svg);
+        return $svg;
+    }
 }
