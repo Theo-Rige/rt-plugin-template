@@ -2,34 +2,60 @@
 
 namespace DOMAIN;
 
+require_once PLUGIN_DIR . 'includes/tool.php';
+
 class Plugin
 {
+    /**
+     * Initializes the plugin.
+     *
+     * @return void
+     */
     public static function init()
     {
         self::loadTextDomain();
         add_action('wp_enqueue_scripts', [self::class, 'registerScripts']);
-        add_shortcode('shortcode', [self::class, 'addShortcode']);
+        add_shortcode('wp-shortcode', [self::class, 'renderShortcode']);
     }
 
+    /**
+     * Loads the text domain for the plugin.
+     *
+     * This method is responsible for loading the translation files for the plugin.
+     * It uses the `load_plugin_textdomain()` function to load the translation files
+     * from the 'languages' directory of the plugin.
+     *
+     * @return void
+     */
     private static function loadTextDomain()
     {
         load_plugin_textdomain(PLUGIN_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages');
     }
 
+    /**
+     * Registers the scripts and styles for the plugin.
+     *
+     * @return void
+     */
     public static function registerScripts()
     {
         wp_register_script('script', PLUGIN_URL . 'assets/js/script.min.js', [], PLUGIN_VERSION, true);
         wp_register_style('style', PLUGIN_URL . 'assets/css/style.min.css', [], PLUGIN_VERSION);
     }
 
-    public static function addShortcode()
+    /**
+     * Renders the shortcode for the plugin.
+     *
+     * This function is responsible for enqueueing necessary scripts and styles,
+     * and loading the template for the shortcode.
+     */
+    public static function renderShortcode()
     {
         // wp_enqueue_script();
         // wp_enqueue_style();
+        // var_dump('Shortcode rendered');
 
-        ob_start();
-        include PLUGIN_DIR . 'templates/shortcode.php';
-        return ob_get_clean();
+        return Tool::loadTemplate('shortcode');
     }
 
     /**
