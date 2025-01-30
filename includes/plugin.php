@@ -6,6 +6,8 @@ require_once RT_PLUGIN_DIR . 'includes/tool.php';
 
 class Plugin
 {
+    const SHORTCODE = 'rt-shortcode';
+
     /**
      * Initializes the plugin.
      *
@@ -14,7 +16,7 @@ class Plugin
     public static function init()
     {
         self::loadTextDomain();
-        add_action( 'init', [self::class, 'registerCustomPostTypes']);
+        add_action('init', [self::class, 'registerCustomPostTypes']);
         add_action('wp_enqueue_scripts', [self::class, 'registerScripts']);
         add_shortcode('wp-shortcode', [self::class, 'renderShortcode']);
     }
@@ -60,8 +62,12 @@ class Plugin
      */
     public static function registerScripts()
     {
-        wp_register_script('script', RT_PLUGIN_URL . 'assets/js/script.min.js', [], RT_PLUGIN_VERSION, true);
-        wp_register_style('style', RT_PLUGIN_URL . 'assets/css/style.min.css', [], RT_PLUGIN_VERSION);
+        global $post;
+
+        if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, self::SHORTCODE)) {
+            wp_enqueue_script('script', RT_PLUGIN_URL . 'assets/js/script.min.js', [], RT_PLUGIN_VERSION, true);
+            wp_enqueue_style('style', RT_PLUGIN_URL . 'assets/css/style.min.css', [], RT_PLUGIN_VERSION);
+        }
     }
 
     /**
@@ -72,10 +78,6 @@ class Plugin
      */
     public static function renderShortcode()
     {
-        // wp_enqueue_script();
-        // wp_enqueue_style();
-        // var_dump('Shortcode rendered');
-
         return Tool::loadTemplate('shortcode');
     }
 
@@ -105,7 +107,7 @@ class Plugin
 
     /**
      * Drop the database table at plugin uninstallation.
-     * 
+     *
      * @return void
      */
     public static function uninstall()
