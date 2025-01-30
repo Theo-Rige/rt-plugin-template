@@ -25,4 +25,4 @@ require_once RT_PLUGIN_DIR . 'includes/plugin.php';
 register_activation_hook(__FILE__, [Plugin::class, 'activate']);
 register_uninstall_hook(__FILE__, [Plugin::class, 'uninstall']);
 
-add_action('init', [Plugin::class, 'init']);
+Plugin::init();
