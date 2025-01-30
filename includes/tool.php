@@ -1,6 +1,6 @@
 <?php
 
-namespace DOMAIN;
+namespace RT;
 
 class Tool
 {
@@ -14,10 +14,10 @@ class Tool
     {
         if ($data) extract($data);
 
-        $themeTemplate = get_stylesheet_directory() . '/' . PLUGIN_DOMAIN . "/$path.php";
+        $themeTemplate = get_stylesheet_directory() . '/' . RT_PLUGIN_DOMAIN . "/$path.php";
 
         ob_start();
-        require file_exists($themeTemplate) ? $themeTemplate : PLUGIN_DIR . "templates/$path.php";
+        require file_exists($themeTemplate) ? $themeTemplate : RT_PLUGIN_DIR . "templates/$path.php";
 
         if ($echo) {
             echo ob_get_clean();
@@ -36,7 +36,7 @@ class Tool
     public static function loadSVG($name, $class = null)
     {
         ob_start();
-        include PLUGIN_DIR . 'assets/svg/' . $name . '.svg';
+        include RT_PLUGIN_DIR . 'assets/svg/' . $name . '.svg';
         $svg = ob_get_clean();
         $svg = str_replace('<svg', '<svg class="' . (!empty($class) ? $class : $name) . '"', $svg);
         return $svg;

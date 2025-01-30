@@ -1,8 +1,8 @@
 <?php
 
-namespace DOMAIN;
+namespace RT;
 
-require_once PLUGIN_DIR . 'includes/tool.php';
+require_once RT_PLUGIN_DIR . 'includes/tool.php';
 
 class Plugin
 {
@@ -29,7 +29,7 @@ class Plugin
      */
     private static function loadTextDomain()
     {
-        load_plugin_textdomain(PLUGIN_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages');
+        load_plugin_textdomain(RT_PLUGIN_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages');
     }
 
     /**
@@ -39,8 +39,8 @@ class Plugin
      */
     public static function registerScripts()
     {
-        wp_register_script('script', PLUGIN_URL . 'assets/js/script.min.js', [], PLUGIN_VERSION, true);
-        wp_register_style('style', PLUGIN_URL . 'assets/css/style.min.css', [], PLUGIN_VERSION);
+        wp_register_script('script', RT_PLUGIN_URL . 'assets/js/script.min.js', [], RT_PLUGIN_VERSION, true);
+        wp_register_style('style', RT_PLUGIN_URL . 'assets/css/style.min.css', [], RT_PLUGIN_VERSION);
     }
 
     /**
