@@ -14,6 +14,7 @@ class Plugin
     public static function init()
     {
         self::loadTextDomain();
+        add_action( 'init', [self::class, 'registerCustomPostTypes']);
         add_action('wp_enqueue_scripts', [self::class, 'registerScripts']);
         add_shortcode('wp-shortcode', [self::class, 'renderShortcode']);
     }
@@ -30,6 +31,26 @@ class Plugin
     private static function loadTextDomain()
     {
         load_plugin_textdomain(RT_PLUGIN_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages');
+    }
+
+    /**
+     * Registers the custom post types for the plugin.
+     *
+     * @return void
+     */
+    public static function registerCustomPostTypes()
+    {
+        register_post_type('custom_post_type', [
+            'labels' => [
+                'name' => __('Custom Post Type', RT_PLUGIN_DOMAIN),
+                'singular_name' => __('Custom Post Type', RT_PLUGIN_DOMAIN),
+            ],
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => ['slug' => 'custom-post-type'],
+            'menu_icon' => 'dashicons-admin-post',
+            'supports' => ['title', 'editor', 'thumbnail'],
+        ]);
     }
 
     /**
