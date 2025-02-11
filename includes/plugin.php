@@ -44,8 +44,8 @@ class Plugin
     {
         register_post_type('custom_post_type', [
             'labels' => [
-                'name' => __('Custom Post Type', RT_PLUGIN_DOMAIN),
-                'singular_name' => __('Custom Post Type', RT_PLUGIN_DOMAIN),
+                'name' => __('Custom Post Type', 'rt-plugin-template'),
+                'singular_name' => __('Custom Post Type', 'rt-plugin-template'),
             ],
             'public' => true,
             'has_archive' => true,
