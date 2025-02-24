@@ -82,9 +82,11 @@ class Plugin
     }
 
     /**
-     * Create the necessary database table at plugin activation.
+     * Create the necessary database table at plugin activation, and flush links after custom post type creation.
      *
      * @return void
+     *
+     * @see https://developer.wordpress.org/reference/functions/register_post_type/#flushing-rewrite-on-activation
      */
     public static function activate()
     {
@@ -103,6 +105,9 @@ class Plugin
         // require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
         // dbDelta($sql);
+
+        // self::registerCustomPostTypes();
+        // flush_rewrite_rules();
     }
 
     /**
