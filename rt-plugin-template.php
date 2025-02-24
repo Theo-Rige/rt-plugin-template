@@ -19,7 +19,7 @@ define('RT_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('RT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('RT_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('RT_PLUGIN_DOMAIN', 'rt-plugin-template');
-define('RT_PLUGIN_VERSION', '1.0.0');
+define('RT_PLUGIN_VERSION', '0.1.0');
 
 require_once RT_PLUGIN_DIR . 'includes/plugin.php';
 
