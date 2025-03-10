@@ -4,7 +4,7 @@ Plugin Name: RT Plugin Template
 Plugin URI: https://github.com/Theo-Rige/wp-plugin-template
 Description: A simple WordPress plugin template.
 Text Domain: rt-plugin-template
-Version: 1.0.0
+Version: 0.1.0
 Author: Theo Rige
 Author uri: rigetheo.netlify.app
 Developer: Theo Rige
