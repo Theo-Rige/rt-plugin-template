@@ -32,7 +32,7 @@ class Plugin
      */
     private static function loadTextDomain()
     {
-        load_plugin_textdomain(RT_PLUGIN_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages');
+        load_plugin_textdomain(RT_PLUGIN_DOMAIN, false, dirname(RT_PLUGIN_BASENAME) . '/languages');
     }
 
     /**
