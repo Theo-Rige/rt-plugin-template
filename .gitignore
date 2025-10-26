@@ -21,3 +21,4 @@ composer.lock
 
 # Backups of translation files
 *-backup-*.po~
+*-backup-*.pot~
