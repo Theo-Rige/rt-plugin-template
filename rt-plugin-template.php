@@ -5,9 +5,9 @@ Plugin URI: https://github.com/Theo-Rige/wp-plugin-template
 Description: A simple WordPress plugin template.
 Version: 0.1.0
 Author: Theo Rige
-Author uri: rigetheo.netlify.app
+Author URI: rigetheo.netlify.app
 Developer: Theo Rige
-Developer uri: rigetheo.netlify.app
+Developer URI: rigetheo.netlify.app
 Text Domain: rt-plugin-template
 Domain Path: /languages
 */
