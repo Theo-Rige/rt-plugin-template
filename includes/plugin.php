@@ -65,8 +65,8 @@ class Plugin
         global $post;
 
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, self::SHORTCODE)) {
-            wp_enqueue_script('script', RT_PLUGIN_URL . 'assets/js/script.min.js', [], RT_PLUGIN_VERSION, true);
-            wp_enqueue_style('style', RT_PLUGIN_URL . 'assets/css/style.min.css', [], RT_PLUGIN_VERSION);
+            wp_enqueue_script('script', RT_PLUGIN_URL . 'assets/dist/js/script.min.js', [], RT_PLUGIN_VERSION, true);
+            wp_enqueue_style('style', RT_PLUGIN_URL . 'assets/dist/css/style.min.css', [], RT_PLUGIN_VERSION);
         }
     }
 
