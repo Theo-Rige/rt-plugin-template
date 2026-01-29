@@ -1,0 +1,6 @@
+{
+	"intelephense.environment.includePaths": [
+		"/<path>/www/wp-content/themes/bricks/",
+		"/<path>/www/wp-content/plugins/advanced-custom-fields-pro/"
+	]
+}
