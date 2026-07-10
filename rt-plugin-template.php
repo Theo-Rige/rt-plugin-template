@@ -17,6 +17,7 @@ use RT\Plugin;
 if (!defined('ABSPATH')) exit;
 
 define('RT_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('RT_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('RT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('RT_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('RT_PLUGIN_DOMAIN', 'rt-plugin-template');

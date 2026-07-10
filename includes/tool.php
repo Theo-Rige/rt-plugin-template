@@ -41,4 +41,42 @@ class Tool
         $svg = str_replace('<svg', '<svg class="icon icon--' . (!empty($class) ? $class : $name) . '"', $svg);
         return $svg;
     }
+
+    /**
+     * Enqueue a JS file.
+     * 
+     * @param string $handle The name of the script. Should be unique.
+     * @param string $path The path to the script file, relative to the plugin directory.
+     * @param array $deps Optional. An array of registered script handles this script depends on. Default is an empty array.
+     * @param string|null $version Optional. The version of the script. Default is the plugin version.
+     * @param bool $inFooter Optional. Whether to enqueue the script before </body> instead of in the <head>. Default is true.
+     */
+    public static function enqueueScript($handle, $path, $deps = [], $version = RT_PLUGIN_VERSION, $inFooter = true)
+    {
+        if (!file_exists(RT_PLUGIN_PATH . 'assets/' . $path . '.min.js')) {
+            error_log("The JS file for handle '$handle' does not exist at path: " . RT_PLUGIN_PATH . 'assets/' . $path . '.min.js');
+            return;
+        }
+
+        wp_enqueue_script($handle, RT_PLUGIN_URL . 'assets/' . $path . '.min.js', $deps, $version, $inFooter);
+    }
+
+    /**
+     * Enqueue a CSS file.
+     * 
+     * @param string $handle The name of the style. Should be unique.
+     * @param string $path The path to the style file, relative to the plugin directory.
+     * @param array $deps Optional. An array of registered style handles this style depends on. Default is an empty array.
+     * @param string|null $version Optional. The version of the style. Default is the plugin version.
+     * @param string $media Optional. The media for which this stylesheet has been defined. Default is 'all'.
+     */
+    public static function enqueueStyle($handle, $path, $deps = [], $version = RT_PLUGIN_VERSION, $media = 'all')
+    {
+        if (!file_exists(RT_PLUGIN_PATH . 'assets/' . $path . '.min.css')) {
+            error_log("The CSS file for handle '$handle' does not exist at path: " . RT_PLUGIN_PATH . 'assets/' . $path . '.min.css');
+            return;
+        }
+
+        wp_enqueue_style($handle, RT_PLUGIN_URL . 'assets/' . $path . '.min.css', $deps, $version, $media);
+    }
 }
