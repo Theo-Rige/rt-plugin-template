@@ -2,10 +2,9 @@
 
 namespace RT;
 
-require_once RT_PLUGIN_DIR . 'includes/tool.php';
+require_once RT_PLUGIN_PATH . 'includes/tool.php';
 
-class Plugin
-{
+class Plugin {
     const SHORTCODE = 'rt-shortcode';
 
     /**
@@ -13,8 +12,7 @@ class Plugin
      *
      * @return void
      */
-    public static function init()
-    {
+    public static function init() {
         self::loadTextDomain();
         add_action('init', [self::class, 'registerCustomPostTypes']);
         add_action('wp_enqueue_scripts', [self::class, 'registerScripts']);
@@ -30,8 +28,7 @@ class Plugin
      *
      * @return void
      */
-    private static function loadTextDomain()
-    {
+    private static function loadTextDomain() {
         load_plugin_textdomain(RT_PLUGIN_DOMAIN, false, dirname(RT_PLUGIN_BASENAME) . '/languages');
     }
 
@@ -40,8 +37,7 @@ class Plugin
      *
      * @return void
      */
-    public static function registerCustomPostTypes()
-    {
+    public static function registerCustomPostTypes() {
         register_post_type('custom_post_type', [
             'labels' => [
                 'name' => __('Custom Post Type', 'rt-plugin-template'),
@@ -60,8 +56,7 @@ class Plugin
      *
      * @return void
      */
-    public static function registerScripts()
-    {
+    public static function registerScripts() {
         global $post;
 
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, self::SHORTCODE)) {
@@ -76,8 +71,7 @@ class Plugin
      * This function is responsible for enqueueing necessary scripts and styles,
      * and loading the template for the shortcode.
      */
-    public static function renderShortcode()
-    {
+    public static function renderShortcode() {
         return Tool::loadTemplate('shortcode');
     }
 
@@ -88,8 +82,7 @@ class Plugin
      *
      * @see https://developer.wordpress.org/reference/functions/register_post_type/#flushing-rewrite-on-activation
      */
-    public static function activate()
-    {
+    public static function activate() {
         // global $wpdb;
 
         // $tableName = $wpdb->prefix . 'table';
@@ -115,8 +108,7 @@ class Plugin
      *
      * @return void
      */
-    public static function uninstall()
-    {
+    public static function uninstall() {
         // global $wpdb;
 
         // $tableName = $wpdb->prefix . 'table';
