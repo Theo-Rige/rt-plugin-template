@@ -2,10 +2,11 @@
 
 namespace RT;
 
+require_once RT_PLUGIN_PATH . 'includes/assets.php';
 require_once RT_PLUGIN_PATH . 'includes/tool.php';
 
 class Plugin {
-    const SHORTCODE = 'rt-shortcode';
+    const SHORTCODE = 'wp-shortcode';
 
     /**
      * Initializes the plugin.
@@ -16,7 +17,9 @@ class Plugin {
         self::loadTextDomain();
         add_action('init', [self::class, 'registerCustomPostTypes']);
         add_action('wp_enqueue_scripts', [self::class, 'registerScripts']);
-        add_shortcode('wp-shortcode', [self::class, 'renderShortcode']);
+        add_shortcode(self::SHORTCODE, [self::class, 'renderShortcode']);
+
+        Assets::init();
     }
 
     /**
@@ -60,8 +63,8 @@ class Plugin {
         global $post;
 
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, self::SHORTCODE)) {
-            Tool::enqueueScript('script', 'dist/js/script');
-            Tool::enqueueStyle('style', 'dist/css/style');
+            Assets::enqueueViteAsset('script', 'js/script.js', [], true);
+            Assets::enqueueViteAsset('style', 'css/style.css');
         }
     }
 
