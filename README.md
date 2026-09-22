@@ -11,6 +11,7 @@ Wordpress plugin template.
 │   ├── js/                     // Compiled and minified production JS files (.min.js)
 │   └── css/                    // Compiled and minified production CSS files (.min.css)
 ├── includes/                   // Directory of all plugin classes
+|   ├── acf.php                 // Handles Advanced Custom Fields local json sync
 │   ├── assets.php              // Handles Vite asset enqueuing & HMR automation
 │   ├── plugin.php              // Main plugin class
 │   └── tool.php                // Tool plugin class
