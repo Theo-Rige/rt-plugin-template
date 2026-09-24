@@ -18,7 +18,6 @@ class Plugin {
         add_shortcode(self::SHORTCODE, [self::class, 'renderShortcode']);
 
         ACF::init();
-        Assets::init();
     }
 
     /**
@@ -39,8 +38,8 @@ class Plugin {
         global $post;
 
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, self::SHORTCODE)) {
-            Assets::enqueueViteAsset('script', 'js/script.js', [], true);
-            Assets::enqueueViteAsset('style', 'css/style.css');
+            Assets::enqueueAsset('script', 'dist/js/script.min.js', [], true);
+            Assets::enqueueAsset('style', 'dist/css/style.min.css');
         }
     }
 
