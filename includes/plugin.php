@@ -3,7 +3,6 @@
 namespace RT;
 
 require_once RT_PLUGIN_PATH . 'includes/acf.php';
-require_once RT_PLUGIN_PATH . 'includes/assets.php';
 require_once RT_PLUGIN_PATH . 'includes/tool.php';
 
 class Plugin {
@@ -38,8 +37,8 @@ class Plugin {
         global $post;
 
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, self::SHORTCODE)) {
-            Assets::enqueueAsset('script', 'dist/js/script.min.js', [], true);
-            Assets::enqueueAsset('style', 'dist/css/style.min.css');
+            Tool::enqueueAsset('script', 'dist/js/script.min.js', [], true);
+            Tool::enqueueAsset('style', 'dist/css/style.min.css');
         }
     }
 
