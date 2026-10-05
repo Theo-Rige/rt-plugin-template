@@ -1,9 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RT;
-
-require_once RT_PLUGIN_PATH . 'includes/form.php';
-
 
 class ACF {
 
